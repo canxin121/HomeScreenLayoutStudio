@@ -1,4 +1,4 @@
-package dev.canxin.launcherenhance.store;
+package dev.canxin.homescreenlayoutstudio.store;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Locale;
 
-import dev.canxin.launcherenhance.LauncherEnhanceContract;
+import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
 
 public class LayoutStoreProvider extends ContentProvider {
     private static final int MATCH_LAYOUTS = 1;
@@ -36,8 +36,8 @@ public class LayoutStoreProvider extends ContentProvider {
 
     @Override
     public boolean onCreate() {
-        matcher.addURI(LauncherEnhanceContract.AUTHORITY, "layouts", MATCH_LAYOUTS);
-        matcher.addURI(LauncherEnhanceContract.AUTHORITY, "layouts/*", MATCH_LAYOUT);
+        matcher.addURI(HomeScreenLayoutStudioContract.AUTHORITY, "layouts", MATCH_LAYOUTS);
+        matcher.addURI(HomeScreenLayoutStudioContract.AUTHORITY, "layouts/*", MATCH_LAYOUT);
         return true;
     }
 
@@ -48,12 +48,12 @@ public class LayoutStoreProvider extends ContentProvider {
             throw new IllegalArgumentException("Unsupported uri: " + uri);
         }
         String[] columns = new String[]{
-                LauncherEnhanceContract.COLUMN_ID,
-                LauncherEnhanceContract.COLUMN_NAME,
-                LauncherEnhanceContract.COLUMN_FILE_NAME,
-                LauncherEnhanceContract.COLUMN_SIZE,
-                LauncherEnhanceContract.COLUMN_MODIFIED,
-                LauncherEnhanceContract.COLUMN_URI
+                HomeScreenLayoutStudioContract.COLUMN_ID,
+                HomeScreenLayoutStudioContract.COLUMN_NAME,
+                HomeScreenLayoutStudioContract.COLUMN_FILE_NAME,
+                HomeScreenLayoutStudioContract.COLUMN_SIZE,
+                HomeScreenLayoutStudioContract.COLUMN_MODIFIED,
+                HomeScreenLayoutStudioContract.COLUMN_URI
         };
         MatrixCursor cursor = new MatrixCursor(columns);
         File[] files = layoutsDir().listFiles((dir, name) -> name.endsWith(".json"));
@@ -69,7 +69,7 @@ public class LayoutStoreProvider extends ContentProvider {
                     file.getName(),
                     file.length(),
                     file.lastModified(),
-                    LauncherEnhanceContract.layoutUri(file.getName()).toString()
+                    HomeScreenLayoutStudioContract.layoutUri(file.getName()).toString()
             });
         }
         return cursor;
@@ -111,10 +111,10 @@ public class LayoutStoreProvider extends ContentProvider {
         if (matcher.match(uri) != MATCH_LAYOUT) {
             throw new IllegalArgumentException("Unsupported uri: " + uri);
         }
-        if (values == null || !values.containsKey(LauncherEnhanceContract.COLUMN_NAME)) {
+        if (values == null || !values.containsKey(HomeScreenLayoutStudioContract.COLUMN_NAME)) {
             return 0;
         }
-        String title = normalizeTitle(values.getAsString(LauncherEnhanceContract.COLUMN_NAME));
+        String title = normalizeTitle(values.getAsString(HomeScreenLayoutStudioContract.COLUMN_NAME));
         if (TextUtils.isEmpty(title)) {
             return 0;
         }
@@ -146,16 +146,16 @@ public class LayoutStoreProvider extends ContentProvider {
     @Override
     public Bundle call(String method, String arg, Bundle extras) {
         enforceAllowedCaller();
-        if (LauncherEnhanceContract.METHOD_GET_TOKEN.equals(method)) {
+        if (HomeScreenLayoutStudioContract.METHOD_GET_TOKEN.equals(method)) {
             Bundle result = new Bundle();
-            result.putString(LauncherEnhanceContract.EXTRA_TOKEN, getOrCreateToken());
+            result.putString(HomeScreenLayoutStudioContract.EXTRA_TOKEN, getOrCreateToken());
             return result;
         }
-        if (LauncherEnhanceContract.METHOD_RECORD_EVENT.equals(method)) {
+        if (HomeScreenLayoutStudioContract.METHOD_RECORD_EVENT.equals(method)) {
             recordEvent(extras == null ? Bundle.EMPTY : extras);
             return Bundle.EMPTY;
         }
-        if (LauncherEnhanceContract.METHOD_GET_STATUS.equals(method)) {
+        if (HomeScreenLayoutStudioContract.METHOD_GET_STATUS.equals(method)) {
             return getStatus();
         }
         return super.call(method, arg, extras);
@@ -252,17 +252,17 @@ public class LayoutStoreProvider extends ContentProvider {
 
     private void recordEvent(Bundle extras) {
         SharedPreferences.Editor editor = prefs().edit();
-        editor.putString(LauncherEnhanceContract.KEY_ACTION, extras.getString(LauncherEnhanceContract.KEY_ACTION, ""));
-        editor.putBoolean(LauncherEnhanceContract.KEY_SUCCESS, extras.getBoolean(LauncherEnhanceContract.KEY_SUCCESS, false));
-        editor.putString(LauncherEnhanceContract.KEY_NAME, extras.getString(LauncherEnhanceContract.KEY_NAME, ""));
-        editor.putString(LauncherEnhanceContract.KEY_MESSAGE, extras.getString(LauncherEnhanceContract.KEY_MESSAGE, ""));
-        editor.putLong(LauncherEnhanceContract.KEY_TIME, extras.getLong(LauncherEnhanceContract.KEY_TIME, System.currentTimeMillis()));
+        editor.putString(HomeScreenLayoutStudioContract.KEY_ACTION, extras.getString(HomeScreenLayoutStudioContract.KEY_ACTION, ""));
+        editor.putBoolean(HomeScreenLayoutStudioContract.KEY_SUCCESS, extras.getBoolean(HomeScreenLayoutStudioContract.KEY_SUCCESS, false));
+        editor.putString(HomeScreenLayoutStudioContract.KEY_NAME, extras.getString(HomeScreenLayoutStudioContract.KEY_NAME, ""));
+        editor.putString(HomeScreenLayoutStudioContract.KEY_MESSAGE, extras.getString(HomeScreenLayoutStudioContract.KEY_MESSAGE, ""));
+        editor.putLong(HomeScreenLayoutStudioContract.KEY_TIME, extras.getLong(HomeScreenLayoutStudioContract.KEY_TIME, System.currentTimeMillis()));
         editor.apply();
 
         Context context = getContext();
         if (context != null) {
-            Intent intent = new Intent(LauncherEnhanceContract.ACTION_STATUS_CHANGED);
-            intent.setPackage(LauncherEnhanceContract.MODULE_PACKAGE);
+            Intent intent = new Intent(HomeScreenLayoutStudioContract.ACTION_STATUS_CHANGED);
+            intent.setPackage(HomeScreenLayoutStudioContract.MODULE_PACKAGE);
             context.sendBroadcast(intent);
         }
     }
@@ -270,11 +270,11 @@ public class LayoutStoreProvider extends ContentProvider {
     private Bundle getStatus() {
         SharedPreferences prefs = prefs();
         Bundle result = new Bundle();
-        result.putString(LauncherEnhanceContract.KEY_ACTION, prefs.getString(LauncherEnhanceContract.KEY_ACTION, ""));
-        result.putBoolean(LauncherEnhanceContract.KEY_SUCCESS, prefs.getBoolean(LauncherEnhanceContract.KEY_SUCCESS, false));
-        result.putString(LauncherEnhanceContract.KEY_NAME, prefs.getString(LauncherEnhanceContract.KEY_NAME, ""));
-        result.putString(LauncherEnhanceContract.KEY_MESSAGE, prefs.getString(LauncherEnhanceContract.KEY_MESSAGE, ""));
-        result.putLong(LauncherEnhanceContract.KEY_TIME, prefs.getLong(LauncherEnhanceContract.KEY_TIME, 0L));
+        result.putString(HomeScreenLayoutStudioContract.KEY_ACTION, prefs.getString(HomeScreenLayoutStudioContract.KEY_ACTION, ""));
+        result.putBoolean(HomeScreenLayoutStudioContract.KEY_SUCCESS, prefs.getBoolean(HomeScreenLayoutStudioContract.KEY_SUCCESS, false));
+        result.putString(HomeScreenLayoutStudioContract.KEY_NAME, prefs.getString(HomeScreenLayoutStudioContract.KEY_NAME, ""));
+        result.putString(HomeScreenLayoutStudioContract.KEY_MESSAGE, prefs.getString(HomeScreenLayoutStudioContract.KEY_MESSAGE, ""));
+        result.putLong(HomeScreenLayoutStudioContract.KEY_TIME, prefs.getLong(HomeScreenLayoutStudioContract.KEY_TIME, 0L));
         return result;
     }
 
@@ -320,8 +320,8 @@ public class LayoutStoreProvider extends ContentProvider {
             return false;
         }
         for (String pkg : packages) {
-            if (LauncherEnhanceContract.LAUNCHER_PACKAGE.equals(pkg)
-                    || LauncherEnhanceContract.MODULE_PACKAGE.equals(pkg)) {
+            if (HomeScreenLayoutStudioContract.LAUNCHER_PACKAGE.equals(pkg)
+                    || HomeScreenLayoutStudioContract.MODULE_PACKAGE.equals(pkg)) {
                 return true;
             }
         }

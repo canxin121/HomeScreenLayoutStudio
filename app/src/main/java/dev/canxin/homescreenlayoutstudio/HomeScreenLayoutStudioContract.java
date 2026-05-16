@@ -1,12 +1,12 @@
-package dev.canxin.launcherenhance;
+package dev.canxin.homescreenlayoutstudio;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 
-public final class LauncherEnhanceContract {
-    public static final String MODULE_PACKAGE = "dev.canxin.launcherenhance";
+public final class HomeScreenLayoutStudioContract {
+    public static final String MODULE_PACKAGE = "dev.canxin.homescreenlayoutstudio";
     public static final String LAUNCHER_PACKAGE = "com.android.launcher";
     public static final String AUTHORITY = MODULE_PACKAGE + ".store";
     public static final Uri BASE_URI = Uri.parse("content://" + AUTHORITY);
@@ -39,7 +39,7 @@ public final class LauncherEnhanceContract {
     public static final String COLUMN_MODIFIED = "modified";
     public static final String COLUMN_URI = "uri";
 
-    private LauncherEnhanceContract() {
+    private HomeScreenLayoutStudioContract() {
     }
 
     public static Uri layoutsUri() {

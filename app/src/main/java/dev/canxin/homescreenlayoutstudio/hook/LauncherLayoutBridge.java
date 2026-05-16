@@ -1,4 +1,4 @@
-package dev.canxin.launcherenhance.hook;
+package dev.canxin.homescreenlayoutstudio.hook;
 
 import android.content.Context;
 import android.net.Uri;
@@ -20,14 +20,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import dev.canxin.launcherenhance.LauncherEnhanceContract;
+import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
 
 final class LauncherLayoutBridge {
     private final Context context;
     private final ClassLoader cl;
-    private final LauncherEnhanceModule module;
+    private final HomeScreenLayoutStudioModule module;
 
-    LauncherLayoutBridge(Context context, ClassLoader classLoader, LauncherEnhanceModule module) {
+    LauncherLayoutBridge(Context context, ClassLoader classLoader, HomeScreenLayoutStudioModule module) {
         this.context = context.getApplicationContext();
         this.cl = classLoader;
         this.module = module;
@@ -48,7 +48,7 @@ final class LauncherLayoutBridge {
     String apply(Uri uri) throws Exception {
         String json = readString(uri);
         String backupName = "before-apply-" + timestamp() + ".json";
-        Uri backupUri = LauncherEnhanceContract.layoutUri(backupName);
+        Uri backupUri = HomeScreenLayoutStudioContract.layoutUri(backupName);
         writeString(backupUri, exportJson());
 
         ParsedRestoreData parsed = parseRestoreData(json);
@@ -137,7 +137,7 @@ final class LauncherLayoutBridge {
         }
         add.invoke(root, "app_list", appList);
         addPropertyNumber.invoke(root, "itemId", Integer.valueOf(1));
-        addPropertyString.invoke(root, "launcher_enhance_exported_at", timestamp());
+        addPropertyString.invoke(root, "home_screen_layout_studio_exported_at", timestamp());
         return prettyJson(root.toString());
     }
 

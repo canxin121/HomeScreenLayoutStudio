@@ -1,6 +1,7 @@
-# Launcher Enhance
+# Home Screen Layout Studio / 桌面布局工坊
 
-Modern libxposed API 101 module for `com.android.launcher`.
+Modern libxposed API 101 module for importing, exporting, managing, and
+editing `com.android.launcher` home screen layouts.
 
 ## Build
 

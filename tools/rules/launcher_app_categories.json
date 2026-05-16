@@ -269,7 +269,8 @@
           "eUICC Probe",
           "TikTok Plugin",
           "TGStickerProvider",
-          "Launcher Enhance"
+          "Home Screen Layout Studio",
+          "桌面布局工坊"
         ],
         "package": [
           "ksunext",
@@ -292,7 +293,7 @@
           "euiccprobe",
           "tiktokplugin",
           "tgsticker",
-          "launcherenhance"
+          "homescreenlayoutstudio"
         ]
       }
     },

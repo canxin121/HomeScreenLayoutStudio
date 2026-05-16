@@ -1,4 +1,4 @@
-package dev.canxin.launcherenhance.hook;
+package dev.canxin.homescreenlayoutstudio.hook;
 
 import android.app.Application;
 import android.os.Build;
@@ -8,8 +8,8 @@ import java.lang.reflect.Method;
 
 import io.github.libxposed.api.XposedModule;
 
-public class LauncherEnhanceModule extends XposedModule {
-    private static final String TAG = "LauncherEnhance";
+public class HomeScreenLayoutStudioModule extends XposedModule {
+    private static final String TAG = "HomeScreenLayoutStudio";
 
     @Override
     public void onModuleLoaded(ModuleLoadedParam param) {

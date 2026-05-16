@@ -21,7 +21,7 @@
 
         <provider
             android:name=".store.LayoutStoreProvider"
-            android:authorities="dev.canxin.launcherenhance.store"
+            android:authorities="dev.canxin.homescreenlayoutstudio.store"
             android:exported="true"
             android:grantUriPermissions="true" />
     </application>

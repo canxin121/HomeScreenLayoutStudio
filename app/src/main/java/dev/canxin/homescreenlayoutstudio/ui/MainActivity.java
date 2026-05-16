@@ -1,4 +1,4 @@
-package dev.canxin.launcherenhance.ui;
+package dev.canxin.homescreenlayoutstudio.ui;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -59,8 +59,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import dev.canxin.launcherenhance.LauncherEnhanceContract;
-import dev.canxin.launcherenhance.R;
+import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
+import dev.canxin.homescreenlayoutstudio.R;
 
 public class MainActivity extends Activity {
     private static final int REQ_IMPORT = 10;
@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
         super.onResume();
-        IntentFilter filter = new IntentFilter(LauncherEnhanceContract.ACTION_STATUS_CHANGED);
+        IntentFilter filter = new IntentFilter(HomeScreenLayoutStudioContract.ACTION_STATUS_CHANGED);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(statusReceiver, filter, Context.RECEIVER_NOT_EXPORTED);
         } else {
@@ -436,11 +436,11 @@ public class MainActivity extends Activity {
 
     private void exportCurrentAs(String title) {
         String fileName = makeStorageName("layout", title);
-        Uri uri = LauncherEnhanceContract.layoutUri(fileName);
+        Uri uri = HomeScreenLayoutStudioContract.layoutUri(fileName);
         setLayoutTitle(uri, title);
         activeFileName = fileName;
         renderListState();
-        sendCommand(LauncherEnhanceContract.ACTION_EXPORT, uri, title);
+        sendCommand(HomeScreenLayoutStudioContract.ACTION_EXPORT, uri, title);
         toast("已开始保存当前桌面");
     }
 
@@ -453,7 +453,7 @@ public class MainActivity extends Activity {
     }
 
     private void autoCheck(LayoutEntry entry) {
-        sendCommand(LauncherEnhanceContract.ACTION_DRY_RUN, entry.uri, entry.title);
+        sendCommand(HomeScreenLayoutStudioContract.ACTION_DRY_RUN, entry.uri, entry.title);
     }
 
     private void confirmApply(LayoutEntry entry) {
@@ -464,7 +464,7 @@ public class MainActivity extends Activity {
                 .setMessage("会把「" + entry.title + "」恢复到系统桌面。恢复前会自动备份当前桌面。")
                 .setNegativeButton("取消", null)
                 .setPositiveButton("恢复", (dialog, which) -> {
-                    sendCommand(LauncherEnhanceContract.ACTION_APPLY, entry.uri, entry.title);
+                    sendCommand(HomeScreenLayoutStudioContract.ACTION_APPLY, entry.uri, entry.title);
                     toast("已开始恢复到桌面");
                 })
                 .show();
@@ -548,7 +548,7 @@ public class MainActivity extends Activity {
                         if (entry != null) {
                             deleteLayout(entry);
                         } else {
-                            getContentResolver().delete(LauncherEnhanceContract.layoutUri(fileName), null, null);
+                            getContentResolver().delete(HomeScreenLayoutStudioContract.layoutUri(fileName), null, null);
                         }
                     }
                     clearSelection();
@@ -606,7 +606,7 @@ public class MainActivity extends Activity {
 
     private void saveImportedJson(byte[] bytes, String title) throws Exception {
         String fileName = makeStorageName("import", title);
-        Uri target = LauncherEnhanceContract.layoutUri(fileName);
+        Uri target = HomeScreenLayoutStudioContract.layoutUri(fileName);
         try (OutputStream outputStream = getContentResolver().openOutputStream(target, "wt")) {
             if (outputStream == null) {
                 throw new IllegalStateException("Cannot open target layout");
@@ -641,20 +641,20 @@ public class MainActivity extends Activity {
 
     private void sendCommand(String action, Uri uri, String title) {
         try {
-            String token = LauncherEnhanceContract.getToken(this);
+            String token = HomeScreenLayoutStudioContract.getToken(this);
             if (TextUtils.isEmpty(token)) {
                 throw new IllegalStateException("No command token");
             }
             Intent intent = new Intent(action);
-            intent.setPackage(LauncherEnhanceContract.LAUNCHER_PACKAGE);
-            intent.putExtra(LauncherEnhanceContract.EXTRA_TOKEN, token);
+            intent.setPackage(HomeScreenLayoutStudioContract.LAUNCHER_PACKAGE);
+            intent.putExtra(HomeScreenLayoutStudioContract.EXTRA_TOKEN, token);
             if (uri != null) {
-                intent.putExtra(LauncherEnhanceContract.EXTRA_URI, uri.toString());
+                intent.putExtra(HomeScreenLayoutStudioContract.EXTRA_URI, uri.toString());
             }
             if (title != null) {
-                intent.putExtra(LauncherEnhanceContract.EXTRA_NAME, title);
+                intent.putExtra(HomeScreenLayoutStudioContract.EXTRA_NAME, title);
             }
-            intent.putExtra(LauncherEnhanceContract.EXTRA_COMMAND_ID, timestamp());
+            intent.putExtra(HomeScreenLayoutStudioContract.EXTRA_COMMAND_ID, timestamp());
             intent.addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
             sendBroadcast(intent);
         } catch (Throwable t) {
@@ -663,7 +663,7 @@ public class MainActivity extends Activity {
     }
 
     private void refreshStatus() {
-        Bundle status = LauncherEnhanceContract.getStatus(this);
+        Bundle status = HomeScreenLayoutStudioContract.getStatus(this);
         currentStatus = status == null ? Bundle.EMPTY : status;
         renderStatus();
     }
@@ -671,18 +671,18 @@ public class MainActivity extends Activity {
     private void refreshList() {
         layouts.clear();
         try (Cursor cursor = getContentResolver().query(
-                LauncherEnhanceContract.layoutsUri(),
+                HomeScreenLayoutStudioContract.layoutsUri(),
                 null,
                 null,
                 null,
                 null)) {
             if (cursor != null && cursor.moveToFirst()) {
                 do {
-                    String title = cursor.getString(cursor.getColumnIndexOrThrow(LauncherEnhanceContract.COLUMN_NAME));
-                    long size = cursor.getLong(cursor.getColumnIndexOrThrow(LauncherEnhanceContract.COLUMN_SIZE));
-                    long modified = cursor.getLong(cursor.getColumnIndexOrThrow(LauncherEnhanceContract.COLUMN_MODIFIED));
-                    String uri = cursor.getString(cursor.getColumnIndexOrThrow(LauncherEnhanceContract.COLUMN_URI));
-                    String fileName = cursor.getString(cursor.getColumnIndexOrThrow(LauncherEnhanceContract.COLUMN_FILE_NAME));
+                    String title = cursor.getString(cursor.getColumnIndexOrThrow(HomeScreenLayoutStudioContract.COLUMN_NAME));
+                    long size = cursor.getLong(cursor.getColumnIndexOrThrow(HomeScreenLayoutStudioContract.COLUMN_SIZE));
+                    long modified = cursor.getLong(cursor.getColumnIndexOrThrow(HomeScreenLayoutStudioContract.COLUMN_MODIFIED));
+                    String uri = cursor.getString(cursor.getColumnIndexOrThrow(HomeScreenLayoutStudioContract.COLUMN_URI));
+                    String fileName = cursor.getString(cursor.getColumnIndexOrThrow(HomeScreenLayoutStudioContract.COLUMN_FILE_NAME));
                     layouts.add(new LayoutEntry(title, fileName, Uri.parse(uri), size, modified));
                 } while (cursor.moveToNext());
             }
@@ -700,17 +700,17 @@ public class MainActivity extends Activity {
         if (errorPanel == null) {
             return;
         }
-        String action = currentStatus.getString(LauncherEnhanceContract.KEY_ACTION, "");
-        boolean success = currentStatus.getBoolean(LauncherEnhanceContract.KEY_SUCCESS, false);
+        String action = currentStatus.getString(HomeScreenLayoutStudioContract.KEY_ACTION, "");
+        boolean success = currentStatus.getBoolean(HomeScreenLayoutStudioContract.KEY_SUCCESS, false);
         if (TextUtils.isEmpty(action) || success) {
             lastErrorText = "";
             errorPanel.setVisibility(View.GONE);
             return;
         }
 
-        String message = currentStatus.getString(LauncherEnhanceContract.KEY_MESSAGE, "");
-        String title = currentStatus.getString(LauncherEnhanceContract.KEY_NAME, "");
-        long time = currentStatus.getLong(LauncherEnhanceContract.KEY_TIME, 0L);
+        String message = currentStatus.getString(HomeScreenLayoutStudioContract.KEY_MESSAGE, "");
+        String title = currentStatus.getString(HomeScreenLayoutStudioContract.KEY_NAME, "");
+        long time = currentStatus.getLong(HomeScreenLayoutStudioContract.KEY_TIME, 0L);
         lastErrorText = errorDetail(action, title, message, time);
         errorMeta.setText(actionLabel(action));
         errorMessage.setText(lastErrorText);
@@ -861,7 +861,7 @@ public class MainActivity extends Activity {
 
     private void setLayoutTitle(Uri uri, String title) {
         ContentValues values = new ContentValues();
-        values.put(LauncherEnhanceContract.COLUMN_NAME, normalizeTitle(title));
+        values.put(HomeScreenLayoutStudioContract.COLUMN_NAME, normalizeTitle(title));
         getContentResolver().update(uri, values, null, null);
     }
 
@@ -1182,7 +1182,7 @@ public class MainActivity extends Activity {
         }
         ClipboardManager clipboardManager = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         if (clipboardManager != null) {
-            clipboardManager.setPrimaryClip(ClipData.newPlainText("Launcher Enhance", text));
+            clipboardManager.setPrimaryClip(ClipData.newPlainText("Home Screen Layout Studio", text));
             toast("已复制详情");
         }
     }

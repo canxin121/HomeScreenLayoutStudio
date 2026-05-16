@@ -1,4 +1,4 @@
-package dev.canxin.launcherenhance.hook;
+package dev.canxin.homescreenlayoutstudio.hook;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.util.Log;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import dev.canxin.launcherenhance.LauncherEnhanceContract;
+import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
 
 final class LauncherCommandReceiver extends BroadcastReceiver {
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
@@ -24,15 +24,15 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
 
     private final Context appContext;
     private final ClassLoader launcherClassLoader;
-    private final LauncherEnhanceModule module;
+    private final HomeScreenLayoutStudioModule module;
 
-    private LauncherCommandReceiver(Context context, ClassLoader classLoader, LauncherEnhanceModule module) {
+    private LauncherCommandReceiver(Context context, ClassLoader classLoader, HomeScreenLayoutStudioModule module) {
         this.appContext = context.getApplicationContext();
         this.launcherClassLoader = classLoader;
         this.module = module;
     }
 
-    static void install(Context context, ClassLoader classLoader, LauncherEnhanceModule module) {
+    static void install(Context context, ClassLoader classLoader, HomeScreenLayoutStudioModule module) {
         if (installed) {
             return;
         }
@@ -41,19 +41,19 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
                 return;
             }
             IntentFilter filter = new IntentFilter();
-            filter.addAction(LauncherEnhanceContract.ACTION_EXPORT);
-            filter.addAction(LauncherEnhanceContract.ACTION_DRY_RUN);
-            filter.addAction(LauncherEnhanceContract.ACTION_APPLY);
-            filter.addAction(LauncherEnhanceContract.ACTION_PING);
+            filter.addAction(HomeScreenLayoutStudioContract.ACTION_EXPORT);
+            filter.addAction(HomeScreenLayoutStudioContract.ACTION_DRY_RUN);
+            filter.addAction(HomeScreenLayoutStudioContract.ACTION_APPLY);
+            filter.addAction(HomeScreenLayoutStudioContract.ACTION_PING);
             LauncherCommandReceiver receiver = new LauncherCommandReceiver(context, classLoader, module);
-            if (LauncherEnhanceModule.canUseReceiverFlags()) {
+            if (HomeScreenLayoutStudioModule.canUseReceiverFlags()) {
                 context.registerReceiver(receiver, filter, Context.RECEIVER_EXPORTED);
             } else {
                 context.registerReceiver(receiver, filter);
             }
             installed = true;
             module.moduleLog(Log.INFO, "command receiver registered");
-            LauncherEnhanceContract.recordEvent(
+            HomeScreenLayoutStudioContract.recordEvent(
                     context.getContentResolver(),
                     "ready",
                     true,
@@ -68,16 +68,16 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
             return;
         }
         String action = intent.getAction();
-        String token = intent.getStringExtra(LauncherEnhanceContract.EXTRA_TOKEN);
-        String uriString = intent.getStringExtra(LauncherEnhanceContract.EXTRA_URI);
-        String name = intent.getStringExtra(LauncherEnhanceContract.EXTRA_NAME);
+        String token = intent.getStringExtra(HomeScreenLayoutStudioContract.EXTRA_TOKEN);
+        String uriString = intent.getStringExtra(HomeScreenLayoutStudioContract.EXTRA_URI);
+        String name = intent.getStringExtra(HomeScreenLayoutStudioContract.EXTRA_NAME);
         WORKER.execute(() -> handle(action, token, uriString, name));
     }
 
     private void handle(String action, String token, String uriString, String name) {
         try {
             verifyToken(token);
-            if (LauncherEnhanceContract.ACTION_PING.equals(action)) {
+            if (HomeScreenLayoutStudioContract.ACTION_PING.equals(action)) {
                 record("ping", true, name, "Launcher hook is ready");
                 return;
             }
@@ -86,13 +86,13 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
             }
             Uri uri = Uri.parse(uriString);
             LauncherLayoutBridge bridge = new LauncherLayoutBridge(appContext, launcherClassLoader, module);
-            if (LauncherEnhanceContract.ACTION_EXPORT.equals(action)) {
+            if (HomeScreenLayoutStudioContract.ACTION_EXPORT.equals(action)) {
                 bridge.exportTo(uri);
                 record("export", true, name, "Exported " + safeName(name));
-            } else if (LauncherEnhanceContract.ACTION_DRY_RUN.equals(action)) {
+            } else if (HomeScreenLayoutStudioContract.ACTION_DRY_RUN.equals(action)) {
                 String summary = bridge.dryRun(uri);
                 record("dry_run", true, name, summary);
-            } else if (LauncherEnhanceContract.ACTION_APPLY.equals(action)) {
+            } else if (HomeScreenLayoutStudioContract.ACTION_APPLY.equals(action)) {
                 String summary = bridge.apply(uri);
                 record("apply", true, name, summary);
             } else {
@@ -108,11 +108,11 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
 
     private void verifyToken(String token) {
         Bundle bundle = appContext.getContentResolver().call(
-                LauncherEnhanceContract.BASE_URI,
-                LauncherEnhanceContract.METHOD_GET_TOKEN,
+                HomeScreenLayoutStudioContract.BASE_URI,
+                HomeScreenLayoutStudioContract.METHOD_GET_TOKEN,
                 null,
                 null);
-        String expected = bundle == null ? null : bundle.getString(LauncherEnhanceContract.EXTRA_TOKEN);
+        String expected = bundle == null ? null : bundle.getString(HomeScreenLayoutStudioContract.EXTRA_TOKEN);
         if (expected == null || token == null || !expected.equals(token)) {
             throw new SecurityException("Bad command token");
         }
@@ -120,7 +120,7 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
 
     private void record(String action, boolean success, String name, String message) {
         try {
-            LauncherEnhanceContract.recordEvent(
+            HomeScreenLayoutStudioContract.recordEvent(
                     appContext.getContentResolver(),
                     action,
                     success,
@@ -132,16 +132,16 @@ final class LauncherCommandReceiver extends BroadcastReceiver {
     }
 
     private String actionToEvent(String action) {
-        if (LauncherEnhanceContract.ACTION_EXPORT.equals(action)) {
+        if (HomeScreenLayoutStudioContract.ACTION_EXPORT.equals(action)) {
             return "export";
         }
-        if (LauncherEnhanceContract.ACTION_DRY_RUN.equals(action)) {
+        if (HomeScreenLayoutStudioContract.ACTION_DRY_RUN.equals(action)) {
             return "dry_run";
         }
-        if (LauncherEnhanceContract.ACTION_APPLY.equals(action)) {
+        if (HomeScreenLayoutStudioContract.ACTION_APPLY.equals(action)) {
             return "apply";
         }
-        if (LauncherEnhanceContract.ACTION_PING.equals(action)) {
+        if (HomeScreenLayoutStudioContract.ACTION_PING.equals(action)) {
             return "ping";
         }
         return "command";

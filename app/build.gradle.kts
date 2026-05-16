@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "dev.canxin.launcherenhance"
+    namespace = "dev.canxin.homescreenlayoutstudio"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "dev.canxin.launcherenhance"
+        applicationId = "dev.canxin.homescreenlayoutstudio"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Launcher Enhance</string>
-    <string name="app_description">Import, export, and manage System Launcher layouts.</string>
+    <string name="app_name">Home Screen Layout Studio</string>
+    <string name="app_description">Import, export, and manage Android launcher layouts.</string>
 </resources>

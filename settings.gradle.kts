@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "LauncherEnhance"
+rootProject.name = "HomeScreenLayoutStudio"
 include(":app")

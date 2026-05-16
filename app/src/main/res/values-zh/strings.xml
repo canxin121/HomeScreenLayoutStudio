@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">桌面布局工坊</string>
+    <string name="app_description">导入、导出和管理 Android 桌面布局。</string>
+</resources>
