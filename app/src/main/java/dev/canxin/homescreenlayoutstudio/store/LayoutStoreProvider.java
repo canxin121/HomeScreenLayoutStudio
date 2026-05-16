@@ -24,6 +24,7 @@ import java.util.Comparator;
 import java.util.Locale;
 
 import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
+import dev.canxin.homescreenlayoutstudio.R;
 
 public class LayoutStoreProvider extends ContentProvider {
     private static final int MATCH_LAYOUTS = 1;
@@ -78,7 +79,7 @@ public class LayoutStoreProvider extends ContentProvider {
     @Override
     public String getType(Uri uri) {
         if (matcher.match(uri) == MATCH_LAYOUTS) {
-            return "vnd.android.cursor.dir/vnd.dev.canxin.launcher-layout";
+            return "vnd.android.cursor.dir/vnd.dev.canxin.home-screen-layout";
         }
         if (matcher.match(uri) == MATCH_LAYOUT) {
             return "application/json";
@@ -222,7 +223,7 @@ public class LayoutStoreProvider extends ContentProvider {
             return base.substring(23);
         }
         if (base.startsWith("before-apply-")) {
-            return "恢复前备份 " + base.substring("before-apply-".length());
+            return requireProviderContext().getString(R.string.source_before_apply) + " " + base.substring("before-apply-".length());
         }
         return base;
     }

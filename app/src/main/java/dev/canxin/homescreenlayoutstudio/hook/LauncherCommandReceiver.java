@@ -15,7 +15,7 @@ import dev.canxin.homescreenlayoutstudio.HomeScreenLayoutStudioContract;
 
 final class LauncherCommandReceiver extends BroadcastReceiver {
     private static final ExecutorService WORKER = Executors.newSingleThreadExecutor(runnable -> {
-        Thread thread = new Thread(runnable, "launcher-enhance-worker");
+        Thread thread = new Thread(runnable, "home-screen-layout-worker");
         thread.setDaemon(true);
         return thread;
     });

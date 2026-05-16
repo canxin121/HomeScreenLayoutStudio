@@ -1,0 +1,797 @@
+{
+  "name": "launcher_app_categories",
+  "description": "桌面应用整理分类规则。规则按顺序匹配，命中第一条后停止。",
+  "fallback": "待确认",
+  "field_aliases": {
+    "title": [
+      "app_title",
+      "label",
+      "name"
+    ],
+    "package": [
+      "packageName",
+      "app_packageName",
+      "package_name",
+      "id"
+    ]
+  },
+  "rules": [
+    {
+      "name": "AI 助手",
+      "layout": {
+        "span": [1, 1],
+        "priority": 850,
+        "preferred_screen": 0
+      },
+      "contains": {
+        "title": [
+          "ChatGPT",
+          "DeepSeek",
+          "Grok",
+          "豆包",
+          "元宝",
+          "小布记忆",
+          "小布指令"
+        ],
+        "package": [
+          "com.openai.",
+          "deepseek",
+          "grok",
+          "hunyuan",
+          "com.larus.nova",
+          "aimemory",
+          "shortcuts"
+        ]
+      }
+    },
+    {
+      "name": "通讯社交",
+      "layout": {
+        "span": [2, 2],
+        "priority": 1000,
+        "preferred_screen": 0
+      },
+      "contains": {
+        "title": [
+          "QQ",
+          "微信",
+          "Telegram",
+          "Twitter",
+          "Discord",
+          "小红书",
+          "百度贴吧",
+          "企业微信",
+          "酷安"
+        ],
+        "package": [
+          "tencent.mm",
+          "mobileqq",
+          "telegram",
+          "twitter",
+          "discord",
+          "xingin",
+          "tieba",
+          "wework",
+          "coolapk"
+        ]
+      }
+    },
+    {
+      "name": "邮件会议",
+      "layout": {
+        "span": [1, 1],
+        "priority": 500,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "Gmail",
+          "QQ邮箱",
+          "邮件",
+          "腾讯会议"
+        ],
+        "package": [
+          "android.gm",
+          "androidqqmail",
+          "android.email",
+          "wemeet"
+        ]
+      }
+    },
+    {
+      "name": "学习办公",
+      "layout": {
+        "span": [2, 2],
+        "priority": 930,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "学在西电",
+          "XDYou",
+          "GitHub",
+          "大学搜题酱",
+          "作业帮",
+          "文档",
+          "扫描全能王"
+        ],
+        "package": [
+          "xuezaixidian",
+          "traintime",
+          "com.github.android",
+          "college.search",
+          "homework",
+          "documentsreader",
+          "camscanner"
+        ]
+      }
+    },
+    {
+      "name": "账号安全",
+      "layout": {
+        "span": [1, 1],
+        "priority": 620,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "Authenticator"
+        ],
+        "package": [
+          "authenticator"
+        ]
+      }
+    },
+    {
+      "name": "系统应用",
+      "layout": {
+        "span": [1, 1],
+        "priority": 700,
+        "preferred_screen": 0
+      },
+      "contains": {
+        "title": [
+          "设置",
+          "使用技巧",
+          "我的一加",
+          "一加社区",
+          "手机搬家",
+          "未成年人模式",
+          "电话本",
+          "主题商店",
+          "家人守护",
+          "禅定空间"
+        ],
+        "package": [
+          "settings",
+          "tips",
+          "oneplus.member",
+          "oneplus.bbs",
+          "backuprestore",
+          "digitalwellbeing",
+          "contacts",
+          "themestore",
+          "familyguard",
+          "brickmode"
+        ]
+      }
+    },
+    {
+      "name": "应用市场",
+      "layout": {
+        "span": [1, 1],
+        "priority": 560,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "Play 商店",
+          "软件商店",
+          "F-Droid",
+          "APKPure",
+          "华为应用市场"
+        ],
+        "package": [
+          "vending",
+          "heytap.market",
+          "fdroid",
+          "apkpure",
+          "huawei.appmarket"
+        ]
+      }
+    },
+    {
+      "name": "高级工具",
+      "layout": {
+        "span": [1, 1],
+        "priority": 680,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "Termux",
+          "DevCheck",
+          "多系统工具箱",
+          "Payload Dumper"
+        ],
+        "package": [
+          "termux",
+          "devcheck",
+          "ourom",
+          "payload"
+        ]
+      }
+    },
+    {
+      "name": "应用管理",
+      "layout": {
+        "span": [1, 1],
+        "priority": 660,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "InstallerX",
+          "Apk Extractor"
+        ],
+        "package": [
+          "installer.x",
+          "apkextractor"
+        ]
+      }
+    },
+    {
+      "name": "系统增强",
+      "layout": {
+        "span": [1, 1],
+        "priority": 760,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "KernelSU",
+          "Shizuku",
+          "LuckyTool",
+          "OShin",
+          "NoActive",
+          "GKD",
+          "JunZi",
+          "Fuck for VIP",
+          "QAuxiliary",
+          "指纹支付",
+          "ColorOS短信漏洞",
+          "NexAlloy",
+          "fcmfix",
+          "HookEuicc",
+          "Integrity Checker",
+          "密钥认证",
+          "雹",
+          "eUICC Probe",
+          "TikTok Plugin",
+          "TGStickerProvider",
+          "Home Screen Layout Studio",
+          "桌面布局工坊"
+        ],
+        "package": [
+          "ksunext",
+          "shizuku",
+          "luckytool",
+          "oshin",
+          "noactive",
+          "gkd",
+          "junzi",
+          "hookvip",
+          "qauxv",
+          "fingerprintpay",
+          "xposed",
+          "revancedxposed",
+          "fcmfix",
+          "hookeuicc",
+          "integritycheck",
+          "keyattestation",
+          "hail",
+          "euiccprobe",
+          "tiktokplugin",
+          "tgsticker",
+          "homescreenlayoutstudio"
+        ]
+      }
+    },
+    {
+      "name": "网络连接",
+      "layout": {
+        "span": [1, 1],
+        "priority": 720,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "Clash",
+          "BFR",
+          "Tailscale",
+          "PCAPdroid",
+          "Fing",
+          "Speedtest",
+          "WiFi万能钥匙"
+        ],
+        "package": [
+          "clash",
+          "bfr",
+          "tailscale",
+          "remote_capture",
+          "overlook",
+          "speedtest",
+          "wifilocating"
+        ]
+      }
+    },
+    {
+      "name": "推送服务",
+      "layout": {
+        "span": [1, 1],
+        "priority": 620,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "FCM 查看器",
+          "HMSPush"
+        ],
+        "package": [
+          "fcmpushviewer",
+          "hmspush"
+        ]
+      }
+    },
+    {
+      "name": "设备互联",
+      "layout": {
+        "span": [1, 1],
+        "priority": 600,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "LocalSend",
+          "WO Mic"
+        ],
+        "package": [
+          "localsend",
+          "wo.voice"
+        ]
+      }
+    },
+    {
+      "name": "文件云盘",
+      "layout": {
+        "span": [1, 1],
+        "priority": 740,
+        "preferred_screen": 1
+      },
+      "contains": {
+        "title": [
+          "MT管理器",
+          "ZArchiver",
+          "ES文件浏览器",
+          "文件管理器+",
+          "文件管理",
+          "1DM",
+          "阿里云盘",
+          "百度网盘",
+          "123云盘",
+          "中国移动云盘",
+          "云端硬盘"
+        ],
+        "package": [
+          "mt.plus",
+          "zarchiver",
+          "estrongs",
+          "filemanager",
+          "idm",
+          "databox",
+          "netdisk",
+          "networkdisk",
+          "mcloud",
+          "apps.docs"
+        ]
+      }
+    },
+    {
+      "name": "浏览器搜索",
+      "layout": {
+        "span": [1, 1],
+        "priority": 770,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "Kiwi Browser",
+          "Firefox",
+          "夸克",
+          "浏览器"
+        ],
+        "package": [
+          "kiwibrowser",
+          "mozilla.firefox",
+          "quark",
+          "heytap.browser"
+        ]
+      }
+    },
+    {
+      "name": "影像创作",
+      "layout": {
+        "span": [1, 1],
+        "priority": 830,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "相册",
+          "相机",
+          "谷歌相机",
+          "Snapseed",
+          "美图秀秀",
+          "醒图",
+          "创意氢壁纸",
+          "Dock壁纸"
+        ],
+        "package": [
+          "gallery",
+          "photos",
+          "camera",
+          "snapcam",
+          "snapseed",
+          "mtxx",
+          "retouch",
+          "makeimage",
+          "dockwalls"
+        ]
+      }
+    },
+    {
+      "name": "地图出行",
+      "layout": {
+        "span": [2, 2],
+        "priority": 960,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "百度地图",
+          "高德地图",
+          "滴滴",
+          "哈啰",
+          "货拉拉",
+          "飞猪",
+          "去哪儿",
+          "铁路12306",
+          "交管12123",
+          "北京交警",
+          "逍遥游"
+        ],
+        "package": [
+          "baidumap",
+          "autonavi",
+          "didi",
+          "easybike",
+          "lalamove",
+          "taobao.trip",
+          "qunar",
+          "mobileticket",
+          "tmri",
+          "bjjj",
+          "roaming"
+        ]
+      }
+    },
+    {
+      "name": "支付银行",
+      "layout": {
+        "span": [2, 2],
+        "priority": 950,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "支付宝",
+          "云闪付",
+          "钱包",
+          "交通银行",
+          "中国工商银行",
+          "招商银行",
+          "掌上生活",
+          "数字人民币",
+          "个人所得税",
+          "厦门国际银行"
+        ],
+        "package": [
+          "alipay",
+          "unionpay",
+          "finshell.wallet",
+          "bankcomm",
+          "icbc",
+          "cmb",
+          "dcep",
+          "tax",
+          "xib"
+        ]
+      }
+    },
+    {
+      "name": "数字资产",
+      "layout": {
+        "span": [2, 2],
+        "priority": 940,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "Bitget Wallet",
+          "币安",
+          "Wise",
+          "Neverless",
+          "Ready",
+          "iFAST GB"
+        ],
+        "package": [
+          "bitkeep",
+          "binance",
+          "transferwise",
+          "neverless",
+          "argent",
+          "ifast"
+        ]
+      }
+    },
+    {
+      "name": "购物外卖",
+      "layout": {
+        "span": [2, 2],
+        "priority": 970,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "淘宝",
+          "天猫",
+          "拼多多",
+          "闲鱼",
+          "淘宝闪购",
+          "美团",
+          "大众点评",
+          "OPPO 商城",
+          "阿里巴巴",
+          "螃蟹账号",
+          "交易猫",
+          "交易吧"
+        ],
+        "package": [
+          "taobao",
+          "tmall",
+          "jingdong.app.mall",
+          "xunmeng",
+          "idlefish",
+          "ele",
+          "sankuai",
+          "dianping",
+          "oppo.store",
+          "alibaba",
+          "pxb7",
+          "jym",
+          "jyb"
+        ]
+      }
+    },
+    {
+      "name": "票务快递",
+      "layout": {
+        "span": [1, 1],
+        "priority": 860,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "票牛",
+          "大麦",
+          "纷玩岛",
+          "顺丰",
+          "京东快递"
+        ],
+        "package": [
+          "ipiaoniu",
+          "damai",
+          "livelab",
+          "sf.activity",
+          "jdlogistic"
+        ]
+      }
+    },
+    {
+      "name": "影音音乐",
+      "layout": {
+        "span": [2, 2],
+        "priority": 980,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "哔哩哔哩",
+          "抖音",
+          "TikTok",
+          "YouTube",
+          "Apple Music",
+          "海贝音乐",
+          "音乐标签",
+          "Arc Player",
+          "音乐",
+          "红果免费短剧",
+          "抖音精选"
+        ],
+        "package": [
+          "bili",
+          "aweme",
+          "musically",
+          "youtube",
+          "apple.android.music",
+          "hiby",
+          "musictag",
+          "videoplayer",
+          "heytap.music",
+          "phoenix.read",
+          "yumme"
+        ]
+      }
+    },
+    {
+      "name": "游戏娱乐",
+      "layout": {
+        "span": [2, 2],
+        "priority": 990,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "游戏中心",
+          "游戏助手",
+          "英雄联盟",
+          "无畏契约",
+          "掌上无畏契约",
+          "洛克王国",
+          "掌上英雄联盟",
+          "PC 掌玩",
+          "头玩",
+          "小黑盒"
+        ],
+        "package": [
+          "gamecenter",
+          "oplus.games",
+          "lolm",
+          "codev",
+          "valorant",
+          "tencent.nrc",
+          "qtl",
+          "fusionplay",
+          "nubia.externdevice",
+          "xiaoheihe"
+        ]
+      }
+    },
+    {
+      "name": "阅读兴趣",
+      "layout": {
+        "span": [1, 1],
+        "priority": 890,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "知乎",
+          "pixiv",
+          "番茄免费小说"
+        ],
+        "package": [
+          "zhihu",
+          "pxv",
+          "dragon.read"
+        ]
+      }
+    },
+    {
+      "name": "天文观星",
+      "layout": {
+        "span": [1, 1],
+        "priority": 520,
+        "preferred_screen": 3
+      },
+      "contains": {
+        "title": [
+          "Stellarium"
+        ],
+        "package": [
+          "stellarium"
+        ]
+      }
+    },
+    {
+      "name": "生活服务",
+      "layout": {
+        "span": [1, 1],
+        "priority": 800,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "U净",
+          "慧生活798"
+        ],
+        "package": [
+          "washer",
+          "cloudora"
+        ]
+      }
+    },
+    {
+      "name": "生活工具",
+      "layout": {
+        "span": [2, 2],
+        "priority": 920,
+        "preferred_screen": 0
+      },
+      "contains": {
+        "title": [
+          "天气",
+          "时钟",
+          "日历",
+          "便签",
+          "录音",
+          "指南针",
+          "计算器",
+          "OPPO 健康",
+          "OKOK",
+          "红外遥控",
+          "翻译"
+        ],
+        "package": [
+          "weather",
+          "alarmclock",
+          "calendar",
+          "note",
+          "soundrecorder",
+          "compass",
+          "calculator",
+          "health",
+          "btcontrol",
+          "consumerIRApp",
+          "translate"
+        ]
+      }
+    },
+    {
+      "name": "政务运营商",
+      "layout": {
+        "span": [1, 1],
+        "priority": 580,
+        "preferred_screen": 2
+      },
+      "contains": {
+        "title": [
+          "中国联通",
+          "公安一网通办",
+          "giffgaff",
+          "9eSIM",
+          "eUICC",
+          "SIM 卡"
+        ],
+        "package": [
+          "unicom",
+          "sinobest",
+          "giffgaff",
+          "simlink",
+          "euicc",
+          "android.stk"
+        ]
+      }
+    }
+  ]
+}
