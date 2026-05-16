@@ -1,0 +1,30 @@
+# Gradle / Android build output
+.gradle/
+build/
+**/build/
+
+# Local Android SDK configuration
+local.properties
+
+# IDE files
+.idea/
+*.iml
+
+# Generated binaries and signing material
+*.apk
+*.ap_
+*.aab
+*.jks
+*.keystore
+*.p12
+
+# Local launcher exports and generated reports
+temp/
+
+# Python helper cache
+__pycache__/
+*.py[cod]
+
+# OS files
+.DS_Store
+Thumbs.db
