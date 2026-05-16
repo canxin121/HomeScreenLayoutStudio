@@ -15,6 +15,8 @@
     <string name="page_rules_subtitle">编辑分类、关键词、优先级、页面和文件夹大小。</string>
     <string name="page_settings_title">设置</string>
     <string name="page_settings_subtitle">主题、语言、诊断信息和默认规则。</string>
+    <string name="page_about_title">关于</string>
+    <string name="page_about_subtitle">项目链接、版本和开源说明。</string>
 
     <string name="saved_layouts">已保存布局</string>
     <string name="count_items">%1$d 个</string>
@@ -58,6 +60,7 @@
     <string name="action_open_rules">打开规则</string>
     <string name="action_copy_diagnostics">复制诊断</string>
     <string name="action_about">关于</string>
+    <string name="action_back_to_settings">返回设置</string>
     <string name="action_back_to_rules">返回规则</string>
     <string name="action_add_app">添加应用</string>
     <string name="action_device_apps">手机应用</string>
@@ -146,8 +149,22 @@
     <string name="theme_dark">暗色</string>
     <string name="language_system">跟随系统</string>
     <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
     <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
     <string name="about_message">一个本地 LSPosed 模块配套应用，用于桌面布局导入、导出、恢复、分类规则管理和手机端布局设计。</string>
+    <string name="about_version">版本：%1$s</string>
+    <string name="about_package">包名：%1$s</string>
+    <string name="about_lsp_required">LSPosed 作用域：com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">链接</string>
+    <string name="about_repository">仓库</string>
+    <string name="about_author_homepage">作者主页</string>
+    <string name="about_open_source_title">开源说明</string>
+    <string name="about_open_source_message">本项目发布在 GitHub。应用使用 AndroidX AppCompat、Material Components、RecyclerView、libxposed API 101、org.json 和 Android Gradle Plugin。第三方组件保留各自的许可证。</string>
 
     <string name="source_before_apply">恢复前备份</string>
     <string name="source_import">导入文件</string>

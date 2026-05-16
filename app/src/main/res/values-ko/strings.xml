@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">홈 화면 레이아웃 스튜디오</string>
+    <string name="app_description">Android 런처 레이아웃을 가져오기, 내보내기, 관리, 재설계합니다.</string>
+
+    <string name="nav_layouts">레이아웃</string>
+    <string name="nav_design">디자인</string>
+    <string name="nav_rules">규칙</string>
+    <string name="nav_settings">설정</string>
+
+    <string name="page_layouts_title">레이아웃 라이브러리</string>
+    <string name="page_layouts_subtitle">런처 백업을 저장, 가져오기, 복원, 관리합니다.</string>
+    <string name="page_design_title">레이아웃 디자인</string>
+    <string name="page_design_subtitle">기기에서 폴더, 페이지, 폴더 크기를 정리합니다.</string>
+    <string name="page_rules_title">분류 규칙</string>
+    <string name="page_rules_subtitle">카테고리, 키워드, 우선순위, 페이지, 폴더 크기를 편집합니다.</string>
+    <string name="page_settings_title">설정</string>
+    <string name="page_settings_subtitle">테마, 언어, 진단, 기본값.</string>
+    <string name="page_about_title">정보</string>
+    <string name="page_about_subtitle">프로젝트 링크, 버전, 오픈 소스 고지.</string>
+
+    <string name="action_about">정보</string>
+    <string name="action_back_to_settings">설정으로 돌아가기</string>
+    <string name="action_copy_diagnostics">진단 정보 복사</string>
+    <string name="action_open_rules">규칙 열기</string>
+    <string name="action_reset_rules">규칙 재설정</string>
+    <string name="settings_appearance_title">화면 표시</string>
+    <string name="settings_appearance_message">라이트 모드, 다크 모드, 시스템 테마, 앱 언어를 선택합니다.</string>
+    <string name="settings_theme">테마</string>
+    <string name="settings_language">언어</string>
+    <string name="settings_rules_title">규칙 및 기본값</string>
+    <string name="settings_rules_message">레이아웃 디자이너에서 사용하는 로컬 규칙을 관리하거나 내장 기본값으로 되돌립니다.</string>
+    <string name="settings_diagnostics_title">진단</string>
+    <string name="settings_diagnostics_message">가져오기, 내보내기, 복원이 실패했을 때 유용한 상태 정보를 복사합니다.</string>
+    <string name="theme_system">시스템 설정 따르기</string>
+    <string name="theme_light">라이트</string>
+    <string name="theme_dark">다크</string>
+    <string name="language_system">시스템 설정 따르기</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
+
+    <string name="about_message">런처 레이아웃 가져오기, 내보내기, 복원, 분류 규칙 관리, 기기 내 레이아웃 디자인을 위한 로컬 LSPosed 모듈 companion 앱입니다.</string>
+    <string name="about_version">버전: %1$s</string>
+    <string name="about_package">패키지: %1$s</string>
+    <string name="about_lsp_required">LSPosed 범위: com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">링크</string>
+    <string name="about_repository">저장소</string>
+    <string name="about_author_homepage">작성자 홈페이지</string>
+    <string name="about_open_source_title">오픈 소스</string>
+    <string name="about_open_source_message">이 프로젝트는 GitHub에 공개되어 있습니다. AndroidX AppCompat, Material Components, RecyclerView, libxposed API 101, org.json, Android Gradle Plugin을 사용합니다. 타사 구성 요소에는 각자의 라이선스가 적용됩니다.</string>
+</resources>

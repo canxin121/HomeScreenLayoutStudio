@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">桌面佈局工坊</string>
+    <string name="app_description">匯入、匯出、管理並重新設計 Android 桌面佈局。</string>
+
+    <string name="nav_layouts">佈局庫</string>
+    <string name="nav_design">設計</string>
+    <string name="nav_rules">規則</string>
+    <string name="nav_settings">設定</string>
+
+    <string name="page_layouts_title">佈局庫</string>
+    <string name="page_layouts_subtitle">儲存、匯入、還原和管理桌面備份。</string>
+    <string name="page_design_title">佈局設計</string>
+    <string name="page_design_subtitle">直接在手機上整理分組、頁面和資料夾大小。</string>
+    <string name="page_rules_title">分類規則</string>
+    <string name="page_rules_subtitle">編輯分類、關鍵字、優先順序、頁面和資料夾大小。</string>
+    <string name="page_settings_title">設定</string>
+    <string name="page_settings_subtitle">主題、語言、診斷資訊和預設規則。</string>
+    <string name="page_about_title">關於</string>
+    <string name="page_about_subtitle">專案連結、版本和開源說明。</string>
+
+    <string name="action_about">關於</string>
+    <string name="action_back_to_settings">返回設定</string>
+    <string name="action_copy_diagnostics">複製診斷</string>
+    <string name="action_open_rules">開啟規則</string>
+    <string name="action_reset_rules">重設規則</string>
+    <string name="settings_appearance_title">外觀</string>
+    <string name="settings_appearance_message">選擇亮色、暗色、跟隨系統，以及應用程式語言。</string>
+    <string name="settings_theme">主題</string>
+    <string name="settings_language">語言</string>
+    <string name="settings_rules_title">規則和預設值</string>
+    <string name="settings_rules_message">管理佈局設計器使用的本機規則，或還原內建預設規則。</string>
+    <string name="settings_diagnostics_title">診斷資訊</string>
+    <string name="settings_diagnostics_message">在匯入、匯出或還原失敗時，複製有用的狀態資訊。</string>
+    <string name="theme_system">跟隨系統</string>
+    <string name="theme_light">亮色</string>
+    <string name="theme_dark">暗色</string>
+    <string name="language_system">跟隨系統</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
+
+    <string name="about_message">一個本機 LSPosed 模組配套應用程式，用於桌面佈局匯入、匯出、還原、分類規則管理和手機端佈局設計。</string>
+    <string name="about_version">版本：%1$s</string>
+    <string name="about_package">套件名稱：%1$s</string>
+    <string name="about_lsp_required">LSPosed 作用範圍：com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">連結</string>
+    <string name="about_repository">程式碼倉庫</string>
+    <string name="about_author_homepage">作者首頁</string>
+    <string name="about_open_source_title">開源說明</string>
+    <string name="about_open_source_message">本專案發布在 GitHub。應用程式使用 AndroidX AppCompat、Material Components、RecyclerView、libxposed API 101、org.json 和 Android Gradle Plugin。第三方元件保留各自的授權條款。</string>
+</resources>

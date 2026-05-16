@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Home Screen Layout Studio</string>
+    <string name="app_description">Importez, exportez, gérez et repensez les dispositions du lanceur Android.</string>
+
+    <string name="nav_layouts">Dispositions</string>
+    <string name="nav_design">Design</string>
+    <string name="nav_rules">Règles</string>
+    <string name="nav_settings">Réglages</string>
+
+    <string name="page_layouts_title">Bibliothèque de dispositions</string>
+    <string name="page_layouts_subtitle">Enregistrez, importez, restaurez et gérez les sauvegardes du lanceur.</string>
+    <string name="page_design_title">Design de disposition</string>
+    <string name="page_design_subtitle">Organisez les dossiers, pages et tailles directement sur l appareil.</string>
+    <string name="page_rules_title">Règles de classification</string>
+    <string name="page_rules_subtitle">Modifiez catégories, mots-clés, priorités, pages et tailles de dossiers.</string>
+    <string name="page_settings_title">Réglages</string>
+    <string name="page_settings_subtitle">Thème, langue, diagnostic et valeurs par défaut.</string>
+    <string name="page_about_title">À propos</string>
+    <string name="page_about_subtitle">Liens du projet, version et mentions open source.</string>
+
+    <string name="action_about">À propos</string>
+    <string name="action_back_to_settings">Retour aux réglages</string>
+    <string name="action_copy_diagnostics">Copier le diagnostic</string>
+    <string name="action_open_rules">Ouvrir les règles</string>
+    <string name="action_reset_rules">Réinitialiser les règles</string>
+    <string name="settings_appearance_title">Apparence</string>
+    <string name="settings_appearance_message">Choisissez le mode clair, sombre, le thème système et la langue de l application.</string>
+    <string name="settings_theme">Thème</string>
+    <string name="settings_language">Langue</string>
+    <string name="settings_rules_title">Règles et valeurs par défaut</string>
+    <string name="settings_rules_message">Gérez les règles locales du designer ou restaurez les règles intégrées.</string>
+    <string name="settings_diagnostics_title">Diagnostic</string>
+    <string name="settings_diagnostics_message">Copiez l état utile lorsqu une importation, exportation ou restauration échoue.</string>
+    <string name="theme_system">Suivre le système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
+    <string name="language_system">Suivre le système</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
+
+    <string name="about_message">Application locale compagnon d un module LSPosed pour importer, exporter et restaurer les dispositions du lanceur, gérer les règles de classification et concevoir des dispositions sur l appareil.</string>
+    <string name="about_version">Version : %1$s</string>
+    <string name="about_package">Paquet : %1$s</string>
+    <string name="about_lsp_required">Portée LSPosed : com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">Liens</string>
+    <string name="about_repository">Dépôt</string>
+    <string name="about_author_homepage">Page de l auteur</string>
+    <string name="about_open_source_title">Open source</string>
+    <string name="about_open_source_message">Ce projet est publié sur GitHub. Il utilise AndroidX AppCompat, Material Components, RecyclerView, libxposed API 101, org.json et Android Gradle Plugin. Les composants tiers conservent leurs propres licences.</string>
+</resources>

@@ -89,7 +89,10 @@ public class MainActivity extends AppCompatActivity {
     private static final int PAGE_APPS = 5;
     private static final int PAGE_UNGROUPED = 6;
     private static final int PAGE_RULE_APPS = 7;
+    private static final int PAGE_ABOUT = 8;
     private static final String FORBIDDEN_TITLE_CHARS = "\\/:*?<>\"|";
+    private static final String REPOSITORY_URL = "https://github.com/canxin121/HomeScreenLayoutStudio";
+    private static final String AUTHOR_URL = "https://github.com/canxin121";
 
     private FrameLayout contentFrame;
     private BottomNavigationView navigationView;
@@ -302,6 +305,8 @@ public class MainActivity extends AppCompatActivity {
             contentFrame.addView(buildUngroupedAppsPage(), frameLp());
         } else if (page == PAGE_RULE_APPS) {
             contentFrame.addView(buildRuleAppsPage(), frameLp());
+        } else if (page == PAGE_ABOUT) {
+            contentFrame.addView(buildAboutPage(), frameLp());
         } else {
             contentFrame.addView(buildSettingsPage(), frameLp());
         }
@@ -333,6 +338,9 @@ public class MainActivity extends AppCompatActivity {
         } else if (currentPage == PAGE_RULE_APPS) {
             headerTitle.setText(routeRuleName == null ? getString(R.string.action_rule_apps) : routeRuleName);
             headerSubtitle.setText(R.string.rule_apps_subtitle);
+        } else if (currentPage == PAGE_ABOUT) {
+            headerTitle.setText(R.string.page_about_title);
+            headerSubtitle.setText(R.string.page_about_subtitle);
         } else {
             headerTitle.setText(R.string.page_settings_title);
             headerSubtitle.setText(R.string.page_settings_subtitle);
@@ -739,7 +747,52 @@ public class MainActivity extends AppCompatActivity {
                 getString(R.string.settings_diagnostics_message),
                 buttonRow(
                         secondaryButton(getString(R.string.action_copy_diagnostics), R.drawable.ic_copy, v -> copyDiagnostics()),
-                        secondaryButton(getString(R.string.action_about), R.drawable.ic_more, v -> showAbout()))), cardLp());
+                        secondaryButton(getString(R.string.action_about), R.drawable.ic_more, v -> switchPage(PAGE_ABOUT)))), cardLp());
+        return scroll;
+    }
+
+    private View buildAboutPage() {
+        ScrollView scroll = new ScrollView(this);
+        LinearLayout page = new LinearLayout(this);
+        page.setOrientation(LinearLayout.VERTICAL);
+        page.setPadding(dp(18), dp(4), dp(18), dp(22));
+        page.setBackgroundColor(color(R.color.surface));
+        scroll.addView(page, new ScrollView.LayoutParams(match(), wrap()));
+
+        MaterialCardView appCard = card();
+        LinearLayout appBody = cardBody();
+        TextView title = text(getString(R.string.app_name), 20, R.color.on_surface, true);
+        appBody.addView(title, lp(match(), wrap()));
+        TextView message = text(getString(R.string.about_message), 14, R.color.on_surface_variant, false);
+        message.setPadding(0, dp(6), 0, dp(10));
+        message.setSingleLine(false);
+        appBody.addView(message, lp(match(), wrap()));
+        appBody.addView(text(getString(R.string.about_version, versionLabel()), 13, R.color.on_surface_variant, false), lp(match(), wrap()));
+        appBody.addView(text(getString(R.string.about_package, getPackageName()), 13, R.color.on_surface_variant, false), lp(match(), wrap()));
+        appBody.addView(text(getString(R.string.about_lsp_required), 13, R.color.on_surface_variant, false), lp(match(), wrap()));
+        appCard.addView(appBody);
+        page.addView(appCard, cardLp());
+
+        MaterialCardView linksCard = card();
+        LinearLayout linksBody = cardBody();
+        linksBody.addView(text(getString(R.string.about_links_title), 18, R.color.on_surface, true), lp(match(), wrap()));
+        linksBody.addView(simpleActionRow(getString(R.string.about_repository), REPOSITORY_URL, R.drawable.ic_link, v -> openUrl(REPOSITORY_URL)), lp(match(), wrap()));
+        linksBody.addView(simpleActionRow(getString(R.string.about_author_homepage), AUTHOR_URL, R.drawable.ic_link, v -> openUrl(AUTHOR_URL)), lp(match(), wrap()));
+        linksCard.addView(linksBody);
+        page.addView(linksCard, cardLp());
+
+        MaterialCardView openSourceCard = card();
+        LinearLayout openSourceBody = cardBody();
+        openSourceBody.addView(text(getString(R.string.about_open_source_title), 18, R.color.on_surface, true), lp(match(), wrap()));
+        TextView openSource = text(getString(R.string.about_open_source_message), 14, R.color.on_surface_variant, false);
+        openSource.setSingleLine(false);
+        openSource.setTextIsSelectable(true);
+        openSource.setPadding(0, dp(8), 0, 0);
+        openSourceBody.addView(openSource, lp(match(), wrap()));
+        openSourceCard.addView(openSourceBody);
+        page.addView(openSourceCard, cardLp());
+
+        page.addView(secondaryButton(getString(R.string.action_back_to_settings), R.drawable.ic_close, v -> switchPage(PAGE_SETTINGS)), fullButtonLp());
         return scroll;
     }
 
@@ -2175,8 +2228,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void chooseLanguage() {
-        String[] values = {AppSettings.LANGUAGE_SYSTEM, AppSettings.LANGUAGE_ZH, AppSettings.LANGUAGE_EN};
-        String[] labels = {getString(R.string.language_system), getString(R.string.language_zh), getString(R.string.language_en)};
+        String[] values = {
+                AppSettings.LANGUAGE_SYSTEM,
+                AppSettings.LANGUAGE_ZH,
+                AppSettings.LANGUAGE_ZH_TW,
+                AppSettings.LANGUAGE_EN,
+                AppSettings.LANGUAGE_JA,
+                AppSettings.LANGUAGE_KO,
+                AppSettings.LANGUAGE_ES,
+                AppSettings.LANGUAGE_FR,
+                AppSettings.LANGUAGE_DE
+        };
+        String[] labels = {
+                getString(R.string.language_system),
+                getString(R.string.language_zh),
+                getString(R.string.language_zh_tw),
+                getString(R.string.language_en),
+                getString(R.string.language_ja),
+                getString(R.string.language_ko),
+                getString(R.string.language_es),
+                getString(R.string.language_fr),
+                getString(R.string.language_de)
+        };
         int checked = indexOf(values, AppSettings.language(this));
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.settings_language)
@@ -2207,12 +2280,22 @@ public class MainActivity extends AppCompatActivity {
         copyText(builder.toString());
     }
 
-    private void showAbout() {
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.app_name)
-                .setMessage(R.string.about_message)
-                .setPositiveButton(R.string.action_close, null)
-                .show();
+    private String versionLabel() {
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), 0);
+            return info.versionName + " (" + info.versionCode + ")";
+        } catch (Throwable ignored) {
+            return "0.1.0";
+        }
+    }
+
+    private void openUrl(String url) {
+        try {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+            startActivity(intent);
+        } catch (Throwable t) {
+            copyText(url);
+        }
     }
 
     private String errorDetail(String action, String title, String message, long time) {

@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Home Screen Layout Studio</string>
+    <string name="app_description">Importa, exporta, administra y rediseña diseños del lanzador de Android.</string>
+
+    <string name="nav_layouts">Diseños</string>
+    <string name="nav_design">Diseño</string>
+    <string name="nav_rules">Reglas</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <string name="page_layouts_title">Biblioteca de diseños</string>
+    <string name="page_layouts_subtitle">Guarda, importa, restaura y administra copias del lanzador.</string>
+    <string name="page_design_title">Diseño de pantalla</string>
+    <string name="page_design_subtitle">Organiza carpetas, páginas y tamaños desde el dispositivo.</string>
+    <string name="page_rules_title">Reglas de clasificación</string>
+    <string name="page_rules_subtitle">Edita categorías, palabras clave, prioridades, páginas y tamaños de carpetas.</string>
+    <string name="page_settings_title">Ajustes</string>
+    <string name="page_settings_subtitle">Tema, idioma, diagnóstico y valores predeterminados.</string>
+    <string name="page_about_title">Acerca de</string>
+    <string name="page_about_subtitle">Enlaces del proyecto, versión y avisos de código abierto.</string>
+
+    <string name="action_about">Acerca de</string>
+    <string name="action_back_to_settings">Volver a Ajustes</string>
+    <string name="action_copy_diagnostics">Copiar diagnóstico</string>
+    <string name="action_open_rules">Abrir reglas</string>
+    <string name="action_reset_rules">Restablecer reglas</string>
+    <string name="settings_appearance_title">Apariencia</string>
+    <string name="settings_appearance_message">Elige modo claro, oscuro, tema del sistema e idioma de la aplicación.</string>
+    <string name="settings_theme">Tema</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_rules_title">Reglas y valores predeterminados</string>
+    <string name="settings_rules_message">Administra las reglas locales del diseñador o restaura las reglas incluidas.</string>
+    <string name="settings_diagnostics_title">Diagnóstico</string>
+    <string name="settings_diagnostics_message">Copia información útil cuando falle una importación, exportación o restauración.</string>
+    <string name="theme_system">Seguir el sistema</string>
+    <string name="theme_light">Claro</string>
+    <string name="theme_dark">Oscuro</string>
+    <string name="language_system">Seguir el sistema</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
+
+    <string name="about_message">Aplicación local complementaria de un módulo LSPosed para importar, exportar y restaurar diseños del lanzador, gestionar reglas de clasificación y diseñar diseños en el dispositivo.</string>
+    <string name="about_version">Versión: %1$s</string>
+    <string name="about_package">Paquete: %1$s</string>
+    <string name="about_lsp_required">Ámbito de LSPosed: com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">Enlaces</string>
+    <string name="about_repository">Repositorio</string>
+    <string name="about_author_homepage">Página del autor</string>
+    <string name="about_open_source_title">Código abierto</string>
+    <string name="about_open_source_message">Este proyecto se publica en GitHub. Usa AndroidX AppCompat, Material Components, RecyclerView, libxposed API 101, org.json y Android Gradle Plugin. Los componentes de terceros conservan sus propias licencias.</string>
+</resources>

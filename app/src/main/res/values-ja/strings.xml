@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">ホーム画面レイアウト工房</string>
+    <string name="app_description">Android ランチャーのレイアウトをインポート、エクスポート、管理、再設計します。</string>
+
+    <string name="nav_layouts">レイアウト</string>
+    <string name="nav_design">デザイン</string>
+    <string name="nav_rules">ルール</string>
+    <string name="nav_settings">設定</string>
+
+    <string name="page_layouts_title">レイアウトライブラリ</string>
+    <string name="page_layouts_subtitle">ランチャーのバックアップを保存、インポート、復元、管理します。</string>
+    <string name="page_design_title">レイアウトデザイン</string>
+    <string name="page_design_subtitle">フォルダー、ページ、サイズを端末上で整理します。</string>
+    <string name="page_rules_title">分類ルール</string>
+    <string name="page_rules_subtitle">カテゴリ、キーワード、優先度、ページ、フォルダーサイズを編集します。</string>
+    <string name="page_settings_title">設定</string>
+    <string name="page_settings_subtitle">テーマ、言語、診断、既定値。</string>
+    <string name="page_about_title">このアプリについて</string>
+    <string name="page_about_subtitle">プロジェクトリンク、バージョン、オープンソース通知。</string>
+
+    <string name="action_about">このアプリについて</string>
+    <string name="action_back_to_settings">設定に戻る</string>
+    <string name="action_copy_diagnostics">診断情報をコピー</string>
+    <string name="action_open_rules">ルールを開く</string>
+    <string name="action_reset_rules">ルールをリセット</string>
+    <string name="settings_appearance_title">表示</string>
+    <string name="settings_appearance_message">ライト、ダーク、システム連動、アプリの言語を選びます。</string>
+    <string name="settings_theme">テーマ</string>
+    <string name="settings_language">言語</string>
+    <string name="settings_rules_title">ルールと既定値</string>
+    <string name="settings_rules_message">レイアウトデザイナーで使うローカルルールを管理し、内蔵の既定ルールに戻せます。</string>
+    <string name="settings_diagnostics_title">診断</string>
+    <string name="settings_diagnostics_message">インポート、エクスポート、復元が失敗したときに役立つ状態情報をコピーします。</string>
+    <string name="theme_system">システムに従う</string>
+    <string name="theme_light">ライト</string>
+    <string name="theme_dark">ダーク</string>
+    <string name="language_system">システムに従う</string>
+    <string name="language_zh">简体中文</string>
+    <string name="language_zh_tw">繁體中文</string>
+    <string name="language_en">English</string>
+    <string name="language_ja">日本語</string>
+    <string name="language_ko">한국어</string>
+    <string name="language_es">Español</string>
+    <string name="language_fr">Français</string>
+    <string name="language_de">Deutsch</string>
+
+    <string name="about_message">ランチャーレイアウトのインポート、エクスポート、復元、分類ルール管理、端末上でのレイアウト設計を行うローカル LSPosed モジュール用アプリです。</string>
+    <string name="about_version">バージョン: %1$s</string>
+    <string name="about_package">パッケージ: %1$s</string>
+    <string name="about_lsp_required">LSPosed スコープ: com.android.launcher · libxposed API 101</string>
+    <string name="about_links_title">リンク</string>
+    <string name="about_repository">リポジトリ</string>
+    <string name="about_author_homepage">作者ホームページ</string>
+    <string name="about_open_source_title">オープンソース</string>
+    <string name="about_open_source_message">このプロジェクトは GitHub で公開されています。AndroidX AppCompat、Material Components、RecyclerView、libxposed API 101、org.json、Android Gradle Plugin を使用しています。サードパーティコンポーネントにはそれぞれのライセンスが適用されます。</string>
+</resources>

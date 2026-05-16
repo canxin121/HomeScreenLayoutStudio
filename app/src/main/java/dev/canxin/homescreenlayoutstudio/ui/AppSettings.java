@@ -17,7 +17,13 @@ public final class AppSettings {
 
     public static final String LANGUAGE_SYSTEM = "system";
     public static final String LANGUAGE_ZH = "zh-CN";
+    public static final String LANGUAGE_ZH_TW = "zh-TW";
     public static final String LANGUAGE_EN = "en";
+    public static final String LANGUAGE_JA = "ja";
+    public static final String LANGUAGE_KO = "ko";
+    public static final String LANGUAGE_ES = "es";
+    public static final String LANGUAGE_FR = "fr";
+    public static final String LANGUAGE_DE = "de";
 
     private AppSettings() {
     }
